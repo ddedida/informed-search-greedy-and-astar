@@ -1,4 +1,5 @@
 import queue
+import time
 
 class Graph:
     def __init__(self, Nodes):
@@ -24,6 +25,7 @@ class Graph:
                 print(node, "\t->", self.adj_List[node])
 
 def Greedy(startNode, heuristics, graph, goalNode="Surabaya"):
+    startTime = time.time()
     priorityQueue = queue.PriorityQueue()
     priorityQueue.put((heuristics[startNode], startNode))
 
@@ -45,8 +47,11 @@ def Greedy(startNode, heuristics, graph, goalNode="Surabaya"):
     sum = 0
     for value in path:
         sum += heuristics[value]
+    
+    endTime = time.time()
+    totalTime = endTime - startTime
 
-    return path, sum
+    return path, sum, totalTime
 
 city_heuristic = {
     "Magetan": 162, "Ngawi": 130, "Ponorogo": 128, "Madiun": 126, 
@@ -71,6 +76,7 @@ graph = Graph(city_heuristic.keys())
 for u, v, x in all_edges:
     graph.add_edges(u, v, x)
 
-gbfs_path, gbfs_sum = Greedy("Magetan", city_heuristic, graph.adj_List)
+gbfs_path, gbfs_sum, gbfs_time = Greedy("Magetan", city_heuristic, graph.adj_List)
 print("Path Greedy\t:", gbfs_path)
 print("Jarak Total\t:", gbfs_sum)
+print("Waktu\t\t:", gbfs_time)
