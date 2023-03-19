@@ -89,4 +89,5 @@ Waktu           : 0.0010008811950683594
 ```
 
 <b>Kesimpulan</b>
+
 Dilihat dari output, algoritma A* memiliki jarak yang lebih pendek dibandingkan Greedy. Namun, dilihat dari waktu eksekusi, Greedy memiliki waktu yang lebih cepat. Perbedaan ini dikarenakan Greedy hanya melihat heuristik dari suatu kota, sedangkan A* melihat heuristik serta actual cost.
