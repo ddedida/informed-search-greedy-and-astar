@@ -1,0 +1,17 @@
+Magetan 12 73
+Ngawi 26 118
+Ponorogo 30 25
+Madiun 51 67
+Bojonegoro 89 113
+Nganjuk 100 60
+Jombang 116 74
+Lamongan 112 128
+Gresik 134 127
+Surabaya 146 116 
+Sidoarjo 168 80
+Probolinggo 187 32
+Situbondo 250 57
+Bangkalan 168 139
+Sampang 215 153
+Pamekasan 223 129
+Sumenep 245 142
