@@ -54,37 +54,42 @@ Waktu           : 0.0010001659393310547
 <b>A* Algorithm</b>
 
 ```py
-def Astar(startNode, heuristics, graph, goalNode="Surabaya"):
+def astar(start, end):
     startTime = time.time()
-    priorityQueue = queue.PriorityQueue()
-    distance = 0
-    path = []
+    path = {}
+    distance = {}
+    q = priority_queue()
+    h = get_heuristics()
 
-    priorityQueue.put((heuristics[startNode] + distance, [startNode, 0]))
+    q.push(start, 0)
+    distance[start] = 0
+    path[start] = None
+    expandedList = []
 
-    while priorityQueue.empty() == False:
-        current = priorityQueue.get()[1]
-        path.append(current[0])
-        distance += int(current[1])
+    while (q.isEmpty() == False):
+        current = q.pop()
+        expandedList.append(current)
 
-        if current[0] == goalNode:
+        if (current == end):
             break
 
-        priorityQueue = queue.PriorityQueue()
+        for new in city[current]:
+            g_cost = distance[current] + int(new.distance)
 
-        for i in graph[current[0]]:
-            if i[0] not in path:
-                priorityQueue.put((heuristics[i[0]] + int(i[1]) + distance, i))
+            if (new.city not in distance or g_cost < distance[new.city]):
+                distance[new.city] = g_cost
+                f_cost = g_cost + heuristic(new.city, h)
+                q.push(new.city, f_cost)
+                path[new.city] = current
 
     endTime = time.time()
     totalTime = endTime - startTime
-
-    return path, totalTime
+    return start, end, path, distance, totalTime
 ```
 Output:
 ```
-Path Greedy     : ['Magetan', 'Madiun', 'Nganjuk', 'Jombang', 'Surabaya']
-Jarak Total     : 182
+Path Astar      : ['Magetan', 'Ngawi', 'Bojonegoro', 'Lamongan', 'Gresik', 'Surabaya']
+Jarak Total     : 144
 Waktu           : 0.0010008811950683594
 ```
 
